@@ -35,7 +35,7 @@
   </div><br>
   <div>
     <li>Página Cadastro Alunos </li>
-    <img src="./prototipos/page2.png" alt="" width ='40%'>
+    <img src="./prototipos/page9.png" alt="" width ='40%'>
   </div><br>
  <div>
     <li>Página Informação do Aluno </li>
