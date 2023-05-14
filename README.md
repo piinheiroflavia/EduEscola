@@ -23,31 +23,31 @@
 <div>
   <div>
     <li>Página Home </li>
-    <img src="./prototipos/page1.png" alt="" width ='30%'>
+    <img src="./prototipos/page1.png" alt="" width ='40%'>
   </div><br>
  <div>
     <li>Navbar </li>
-    <img src="./prototipos/page6.png" alt="" width ='30%'>
+    <img src="./prototipos/page6.png" alt="" width ='40%'>
   </div><br>
   <div>
     <li>Página Tabela de Unidades  </li>
-    <img src="./prototipos/page5.png" alt="" width ='30%'>
+    <img src="./prototipos/page5.png" alt="" width ='40%'>
   </div><br>
   <div>
     <li>Página Cadastro Alunos </li>
-    <img src="./prototipos/page2.png" alt="" width ='30%'>
+    <img src="./prototipos/page2.png" alt="" width ='40%'>
   </div><br>
  <div>
     <li>Página Informação do Aluno </li>
-    <img src="./prototipos/page3.png" alt="" width ='30%'>
+    <img src="./prototipos/page3.png" alt="" width ='40%'>
   </div><br>
   <div>
     <li>Página Tabela de Alunos </li>
-    <img src="./prototipos/page7.png" alt="" width ='30%'>
+    <img src="./prototipos/page7.png" alt="" width ='40%'>
   </div><br>
  <div>
     <li> Filtro de Pesquisa </li>
-    <img src="./prototipos/page8.png" alt="" width ='30%'>
+    <img src="./prototipos/page8.png" alt="" width ='40%'>
   </div><br>
  
  </div>
