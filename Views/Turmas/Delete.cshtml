@@ -1,0 +1,201 @@
+﻿@model EduEscola.Models.Turma
+
+@{
+    ViewData["Title"] = "Informações";
+}
+
+
+<div class="page-content page-container" id="page-content" style="margin-top:50px">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="align-self-auto">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h6>
+                                <div class="Col">
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">Turma:</p>
+                                        <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.CodigoTurma)</h6>
+                                    </div>
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">Unidade:</p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Unidades.Nome_Unidade)</h6>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <p class="m-b-10 f-w-600">Turno</p>
+                                    <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.Turno)</h6>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br /><br />
+            <a class="btn btn-dark" asp-action="Index" style="margin-left:20px; color: #fff; background: #001B3D"> Voltar </a> |
+
+    <!--EXCLUIR -->
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #fff; background: #001B3D">
+         Excluir 
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza que deseja excluir?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="TurmaId" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+     
+<style>
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+        -webkit-box-shadow: 0 1px 20px 0 rgba(41,54,60) rgba(69,90,100,0.10);
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,0.10);
+    border: none;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: #001B3D;
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+ 
+h6 {
+    font-size: 16px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+
+p {
+    font-size: 16px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa5 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+</style>

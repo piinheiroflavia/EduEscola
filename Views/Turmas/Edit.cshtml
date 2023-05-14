@@ -1,0 +1,174 @@
+﻿@model EduEscola.Models.Turma
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="page-content page-container" id="page-content" style="margin-top:50px">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="align-self-auto">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="card-block">
+							<form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+								<input type="hidden" asp-for="TurmaId" />
+								<h5 class="m-b-20 p-b-5 b-b-default f-w-600">Editar Turma</h5>
+                                <br>
+                                <div class="Col">
+								    <div class="row form-group">
+                                        <p class="m-b-10 f-w-600">Nº da Turma: </p>
+								    <input asp-for="CodigoTurma" class="form-control" />
+									<span asp-validation-for="CodigoTurma" class="text-danger"></span>
+								</div>
+                                <br>
+								<div class="row form-group">
+								    <p class="m-b-10 f-w-600">Unidade: </p>
+									<select asp-for="UnidadeId" class="form-control" asp-items="ViewBag.UnidadeId"></select>
+									<span asp-validation-for="UnidadeId" class="text-danger"></span>
+								</div>
+								<br><br>
+								<div class="form-group">
+									<a class="btn btn-dark" asp-action="Index" style=" color: #fff; background: #001B3D"> Voltar </a> |
+									<input type="submit" value="Save" class="btn btn-primary" style=" color: #fff; background: #001B3D"/>
+								</div>
+							</form>
+						</div>
+					</div>						
+				</div>
+            </div>
+        </div>
+     </div>
+</div>
+ </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<style>
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+        -webkit-box-shadow: 0 1px 20px 0 rgba(41,54,60) rgba(69,90,100,0.10);
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,0.10);
+    border: none;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: #001B3D;
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+ 
+h6 {
+    font-size: 16px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+
+p {
+    font-size: 16px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa5 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+</style>

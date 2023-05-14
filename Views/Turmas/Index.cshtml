@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EduEscola.Models.Turma>
+
+@{
+    ViewData["Title"] = "Turma";
+}
+
+<h1 style="margin-top:50px">Turma</h1>
+
+<nav class="navbar">
+    <div class="container-fluid form-group justify-content-end">
+        <form class="d-flex  " role="search" asp-action="Index" method="get">
+            <input class="form-control me-2 form-control" name="Pesquisar" type="search" value="@ViewData["CurrentFilter"]" placeholder="Pesquisar unidade.." aria-label="Search">
+            <button class="btn btn-outline-success" value="Search" type="submit">
+                <span class="material-symbols-outlined" style="font-size: 1.4rem">
+                    search
+                </span>
+            </button>
+            <button class="btn btn-outline-success" asp-action="Create" style="margin-left:10px">
+                <span class="material-symbols-outlined" style="font-size: 1.4rem">
+                    add
+                </span>
+            </button>
+        </form>  
+    </div>
+</nav>
+
+
+
+
+
+<table class=" table bg-white table-bordered table-hover ">
+    <thead>
+        <tr class="table border-color-dark" style="color: #fff; background: #001B3D; border: solid 1px #001B3D;  ">
+            <th>
+                Turma
+                @*@Html.DisplayNameFor(model => model.CodigoTurma)*@
+            </th>
+            <th>
+                Unidade
+                @*@Html.DisplayNameFor(model => model.Unidades)*@
+            </th>
+            <th>
+                Turno
+                @*@Html.DisplayNameFor(model => model.Turno)*@
+            </th>
+            @*<th>Total Alunos</th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="border-radius:8px ;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoTurma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unidades.Nome_Unidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Turno)
+            </td>
+            @*<td>
+                @ViewBag.Quantidade
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TurmaId" style="  text-decoration:none">
+                    <span class="material-symbols-outlined" style="color: #000 ">edit</span>
+                </a>  
+                <a asp-action="Delete" asp-route-id="@item.TurmaId" style="  text-decoration:none">
+                   <span class="material-symbols-outlined" style="color: #000 ">info</span>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<h6>Total:  @ViewBag.Quantidade Turmas  </h6>

@@ -1,0 +1,297 @@
+﻿@model EduEscola.Models.Aluno
+
+@{
+    ViewData["Title"] = "Informações Aluno";
+}
+
+<div class="page-content page-container" id="page-content" style="margin-top:50px">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="align-self-auto">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                </div>
+                                <h6 class="f-w-600">@Html.DisplayFor(model => model.NomeCompleto)</h6>
+
+                                <p>Estudante</p>
+                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informações Pessoais</h6>
+                                <div class="Col">
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">Nome Completo:</p>
+                                        <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.NomeCompleto)</h6>
+                                    </div>
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">CPF:</p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Cpf)</h6>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <p class="m-b-10 f-w-600">Data de Nascimento</p>
+                                    <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.DataNascimento)</h6>
+                                </div>
+
+
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Informações Escolar</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Matrícula</p>
+                                        <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.MatriculaAluno)</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Turma</p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Turmas.CodigoTurma)</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Turno</p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Turmas.Turno)</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Unidade</p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Turmas.Unidades.Nome_Unidade)</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br /><br />
+            <a class="btn btn-dark" asp-action="Index" style="margin-left:20px; color: #fff; background: #001B3D"> Voltar </a> |
+
+
+
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModall" style="color: #fff; background: #001B3D">
+                Editar
+            </button> |
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <form asp-action="Edit">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" asp-for="IdAluno" />
+                                        <div class="form-group">
+                                            <label asp-for="NomeCompleto" class="control-label"></label>
+                                            <input asp-for="NomeCompleto" class="form-control" />
+                                            <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Cpf" class="control-label"></label>
+                                            <input asp-for="Cpf" class="form-control" />
+                                            <span asp-validation-for="Cpf" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="DataNascimento" class="control-label"></label>
+                                            <input asp-for="DataNascimento" class="form-control" />
+                                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="MatriculaAluno" class="control-label"></label>
+                                            <input asp-for="MatriculaAluno" class="form-control" />
+                                            <span asp-validation-for="MatriculaAluno" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="TurmaId" class="control-label"></label>
+                                            <select asp-for="TurmaId" class="form-control" asp-items="ViewBag.CodigoTurma">
+                                            </select>
+                                            <span asp-validation-for="TurmaId" class="text-danger"></span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" value="Salvar" class="btn btn-dark" /> |
+                                            <a class="btn btn-dark" asp-action="Details">Voltar</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @section Scripts {
+                                @{
+                                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                                }
+                            }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!--EXCLUIR -->
+                <button type="button" class="btn btn-dark" id="btn-excluir-aluno" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="Apagar()">
+                    Excluir
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Aluno</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Tem certeza que deseja excluir?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="IdAluno" />
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="~/js/Aluno.js" asp-append-version="true"></script>
+
+    <style>
+        .user-card-full {
+            overflow: hidden;
+        }
+
+        .card {
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 20px 0 rgba(41,54,60) rgba(69,90,100,0.10);
+            box-shadow: 0 1px 20px 0 rgba(69,90,100,0.10);
+            border: none;
+        }
+
+        .m-r-0 {
+            margin-right: 0px;
+        }
+
+        .m-l-0 {
+            margin-left: 0px;
+        }
+
+        .user-card-full .user-profile {
+            border-radius: 5px 0 0 5px;
+        }
+
+        .bg-c-lite-green {
+            background: #001B3D;
+        }
+
+        .user-profile {
+            padding: 20px 0;
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .m-b-25 {
+            margin-bottom: 25px;
+        }
+
+        .img-radius {
+            border-radius: 5px;
+        }
+
+
+
+        h6 {
+            font-size: 16px;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+
+        p {
+            font-size: 16px;
+        }
+
+        .card-block {
+            padding: 1.25rem;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .card .card-block p {
+            line-height: 25px;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .text-muted {
+            color: #919aa5 !important;
+        }
+
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .f-w-600 {
+            font-weight: 600;
+        }
+
+        .m-b-20 {
+            margin-bottom: 20px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .p-b-5 {
+            padding-bottom: 5px !important;
+        }
+
+        .m-b-10 {
+            margin-bottom: 10px;
+        }
+
+        .m-t-40 {
+            margin-top: 20px;
+        }
+
+        .user-card-full .social-link li {
+            display: inline-block;
+        }
+
+            .user-card-full .social-link li a {
+                font-size: 20px;
+                margin: 0 10px 0 0;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+    </style>
+

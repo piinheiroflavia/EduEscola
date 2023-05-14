@@ -1,0 +1,304 @@
+﻿@model EduEscola.Models.Unidade
+
+@{
+    ViewData["Title"] = "Informações Da Unidade";
+}
+
+@*<div>
+    <h4>Unidade</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome_Unidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome_Unidade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-dark" asp-action="Index">Voltar</a> |
+
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModall">
+        Editar
+    </button> 
+</div>
+*@
+
+<div class="page-content page-container" id="page-content" style="margin-top:50px">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="align-self-auto">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                </div>
+                                    <h6 class="f-w-600">@Html.DisplayFor(model => model.Nome_Unidade)</h6>
+
+                                <p>Diretor(a)</p>
+                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informações da Unidade</h6>
+                                <div class="Col">
+
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">Unidade: </p>
+                                        <h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.Nome_Unidade)</h6>
+                                    </div>
+
+                                    <div class="row">
+                                        <p class="m-b-10 f-w-600">Endereço: </p>
+                                        <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Endereco)</h6>
+                                    </div>
+
+                                </div>
+                               
+                               
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Cursos </h6>
+                                <div class="row">
+
+                                    @*ADICIONAR UMA LISTA DE CURSOS*@
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Cursos: </p>
+                                        @*<h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.NomeCurso)</h6>*@
+                                    </div>
+                                    
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Quantidade de Alunos </h6>
+                                <div class="row">
+
+                                    @*ADICIONAR UMA LISTA DE CURSOS*@
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Total: </p>
+                                        @*<h6 class="text-muted f-w-400"> @Html.DisplayFor(model => model.NomeCurso)</h6>*@
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+    <br /><br />
+    <a class="btn btn-dark" asp-action="Index" style="margin-left:20px; color: #fff; background: #001B3D"> Voltar </a> |
+
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModall" style="color: #fff; background: #001B3D">
+         Editar 
+    </button> |
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="UnidadeId" />
+
+                                <div class="form-group">
+                                    <label asp-for="Nome_Unidade" class="control-label"></label>
+                                    <input asp-for="Nome_Unidade" class="form-control" />
+                                    <span asp-validation-for="Nome_Unidade" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Endereco" class="control-label"></label>
+                                    <input asp-for="Endereco" class="form-control" />
+                                    <span asp-validation-for="Endereco" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <input type="submit" value="Salvar" class="btn btn-dark" /> |
+                                    <a class="btn btn-dark" asp-action="Details">Voltar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @section Scripts {
+                        @{
+                            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--EXCLUIR -->
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #fff; background: #001B3D">
+         Excluir 
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Unidade</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza que deseja excluir a @Html.DisplayFor(model => model.Nome_Unidade)?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="UnidadeId" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+     
+<style>
+.user-card-full {
+    overflow: hidden;
+}
+
+.card {
+    border-radius: 5px;
+        -webkit-box-shadow: 0 1px 20px 0 rgba(41,54,60) rgba(69,90,100,0.10);
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,0.10);
+    border: none;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+.m-l-0 {
+    margin-left: 0px;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px 0 0 5px;
+}
+
+.bg-c-lite-green {
+        background: #001B3D;
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+
+ 
+h6 {
+    font-size: 16px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+
+p {
+    font-size: 16px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa5 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.user-card-full .social-link li {
+    display: inline-block;
+}
+
+.user-card-full .social-link li a {
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+</style>

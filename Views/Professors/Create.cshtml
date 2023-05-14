@@ -1,0 +1,62 @@
+﻿@model EduEscola.Models.Professor
+
+@{
+    ViewData["Title"] = "Cadastrar Professor";
+}
+
+
+<h4 style="margin-top:100px"> Cadastrar Professor</h4>
+
+<div class="row">
+
+    <div class="row">
+        <form class="row g-3" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-6">
+                <label asp-for="Nome_Professor" class="control-label">Professor: </label>
+                <input asp-for="Nome_Professor" id="NomeProf" class="form-control" onkeyup="validaNome()" onkeypress="return ApenasLetras(event,this)" />
+                <span asp-validation-for="Nome_Professor" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Email_Professor" id="resEmailProfessor" class="control-label">Email: </label>
+                <input asp-for="Email_Professor" id="email" class="form-control" placeholder="Digite o email" onkeyup="validaEmail(this.value)" />
+                <span asp-validation-for="Email_Professor" id="Email_Professor" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                <label asp-for="Genero_Professor" id="Genero_Professor" class="control-label">Gênero: </label>
+                <div class="col-md-10">
+                    
+                    <select class="form-control" id="Genero_Professor" name="Genero_Professor">
+                        <option value="">Escolher opção</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Matricula_Professor" class="control-label">Registro do Conselho Regional:</label>
+                <input asp-for="Matricula_Professor" id="registroCR" class="form-control"  onkeyup="validaRegistro()" />
+                <span asp-validation-for="Matricula_Professor" id="SpanregistroCR" class="text-danger"></span>
+            </div>
+            <!--respostas geral se todos os inputs estão preenchidos ou não-->
+            <div id="respErro" class="loader">
+                <p></p>
+            </div>
+            <div id="respSucesso" class="loader">
+                <p></p>
+            </div>
+            <div>
+                <input type="submit" id="btn" value="Enviar" class="btn " style="color: #fff; background: #001B3D" onclick="validar()"  disabled/> |
+                <a class="btn "  asp-action="Index" style="color: #fff; background: #001B3D">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/js/Professor.js"></script>

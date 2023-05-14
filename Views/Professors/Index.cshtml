@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EduEscola.Models.Professor>
+
+@{
+    ViewData["Title"] = "Professor";
+}
+
+<h1 style="margin-top:50px">Professor</h1>
+
+<nav class="navbar">
+    <div class="container-fluid form-group justify-content-end">
+        <form class="d-flex  " role="search" asp-action="Index" method="get">
+            <input class="form-control me-2 form-control" name="Pesquisar" type="search" value="@ViewData["CurrentFilter"]" placeholder="Pesquisar nome.." aria-label="Search">
+            <button class="btn btn-outline-success" value="Search" type="submit">
+                <span class="material-symbols-outlined" style="font-size: 1.4rem">
+                    search
+                </span>
+            </button>
+            <button class="btn btn-outline-success" asp-action="Create" style="margin-left:10px">
+                <span class="material-symbols-outlined" style="font-size: 1.4rem">
+                    add
+                </span>
+            </button>
+        </form>
+    </div>
+</nav> 
+
+
+<table class=" table bg-white table-bordered table-hover">
+<thead>
+        <tr class="table border-color-dark" style="color: #fff; background: #001B3D; border: solid 1px #001B3D; ">
+            <th>
+                Professor
+                @*@Html.DisplayNameFor(model => model.Nome_Professor)*@
+            </th>
+            <th>
+                Nº do Registro 
+                @*@Html.DisplayNameFor(model => model.Matricula_Professor)*@
+            </th>
+            <th>
+                Email
+                @*@Html.DisplayNameFor(model => model.Matricula_Professor)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="border-radius:8px ;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Professor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matricula_Professor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email_Professor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProfessorId" style="  text-decoration:none">
+                    <span class="material-symbols-outlined" style="color: #000 ">edit</span>
+                </a> 
+                    <a asp-action="Delete" asp-route-id="@item.ProfessorId" style="  text-decoration:none">
+                     <span class="material-symbols-outlined" style="color: #000 ">info</span>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<h6>Total: @ViewBag.Quantidade professores </h6>

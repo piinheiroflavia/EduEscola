@@ -1,0 +1,90 @@
+﻿@model EduEscola.Models.Aluno
+
+@{
+    ViewData["Title"] = "Cadastrar Aluno";
+}
+
+<h4 style="margin-top:100px">Cadastrar Aluno</h4>
+
+
+<div class="row">
+    <div class="row">
+
+        <form class="row g-3" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-6">
+                <label asp-for="NomeCompleto"  class="control-label"> Nome Completo:</label>
+                <input asp-for="NomeCompleto" id="NomeAluno" class="form-control" onkeyup="validaNome()" onkeypress="return ApenasLetras(event,this)" />
+                <span asp-validation-for="NomeCompleto" class="text-danger"> </span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Cpf" id="rescpfAluno" class="control-label">CPF:</label>
+                <input asp-for="Cpf" id="cpf" class="form-control" onkeyup="validaCpf(TestaCPF(this.value));" />
+                <span asp-validation-for="Cpf" id="SpanCpfAluno" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6 form-group">               
+                <label asp-for="Genero_Aluno" id="GeneroAluno" class="control-label">Gênero: </label>
+                <div class="col-md-10">
+                    <select class="form-control" id="Genero_Aluno" name="Genero_Aluno">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="DataNascimento" class="control-label">Data de Nascimento: </label>
+                <input asp-for="DataNascimento" id="DataNascimento" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="MatriculaAluno" class="control-label">Matrícula: </label>
+                <input asp-for="MatriculaAluno" id="matricula" class="form-control" onkeyup="validaMatricula()" />
+                <span asp-validation-for="MatriculaAluno" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                @*@Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label asp-for="Status_Matricula" id="StatusMatricula" class="control-label">Status da Matricula: </label>
+                <div class="col-md-10">
+                    <select class="form-control" id="Status_Matricula" name="Status_Matricula">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Trancado">Trancado</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <label asp-for="TurmaId" class="control-label">Turma: </label>
+                <select asp-for="TurmaId" id="turma" class="form-control" value="Selecionar" asp-items="ViewBag.TurmaId">
+                    @foreach (var item in Model.Turmass)
+                    {
+                        
+                        <option value="@item.TurmaId">@item.CodigoTurma </option>
+                    }
+                </select>
+            </div>
+            <br /><br />
+            <div id="respErro" class="loader">
+                <p></p>
+            </div>
+            <div id="respSucesso" class="loader">
+                <p></p>
+            </div>
+            <div>
+                <input type="submit" value="Enviar" id="btn" class="btn " style="color: #fff; background: #001B3D" onclick="validar()" disabled /> |
+                <a class="btn " asp-action="Index" style="color: #fff; background: #001B3D">Voltar</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/js/Aluno.js"></script>

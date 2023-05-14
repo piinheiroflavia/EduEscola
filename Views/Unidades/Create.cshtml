@@ -1,0 +1,65 @@
+﻿@model EduEscola.Models.Unidade
+
+@{
+    ViewData["Title"] = "Cadastrar ";
+}
+
+<h4 style="margin-top:100px"> Cadastrar Unidade</h4>
+
+<div class="row">
+    <div class="row">
+        <form class="row g-3" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-6">
+                <label asp-for="Nome_Unidade" class="control-label">Unidade: </label>
+                <input asp-for="Nome_Unidade" id="NomeUnidade" class="form-control" onkeyup="validaUnidade()" onkeypress="return ApenasLetras(event,this)" />
+                <label id="resUnidade" class="control-label"> </label>
+                <span asp-validation-for="Nome_Unidade" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Endereco" id="resEndereco" class="control-label">Endereço: </label>
+                <input asp-for="Endereco" id="Endereco" class="form-control" onkeyup="validaEndereco()"  />
+                <label id="resEndereco" class="control-label"> </label>
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Nome_Diretor" id="Nome_Diretor" class="control-label">Nome Diretor: </label>
+                <input asp-for="Nome_Diretor" id="NomeDiretor" class="form-control" onkeyup="validaNomeD()" onkeypress="return ApenasLetras(event,this)" />
+                <label id="resNome_Diretor" class="control-label"> </label>
+                <span asp-validation-for="Nome_Diretor" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group">
+                @*@Html.LabelFor(model => model.Genero, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label asp-for="Genero" id="Genero" class="control-label">Sexo: </label>
+                <div class="col-md-10">
+                    <select class="form-control" id="Genero" name="Genero">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+            </div>  
+            <br /><br />
+            <div id="respErro" class="loader">
+                <p></p>
+            </div>
+            <div id="respSucesso" class="loader">
+                <p></p>
+            </div>
+            <div>
+                <input type="submit" value="Enviar" class="btn" style="color: #fff; background: #001B3D" id="btn" onclick="validar()" disable />  |
+                <a class="btn" asp-action="Index" style="color: #fff; background: #001B3D">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+<script src="~/js/Unidade.js"></script>

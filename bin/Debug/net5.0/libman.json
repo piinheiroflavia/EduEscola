@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery.form@4.3.0",
+      "destination": "wwwroot/lib/jquery.form/"
+    }
+  ]
+}
