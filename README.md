@@ -16,7 +16,7 @@
 <li> SQLSERVER . </li>
   
 <h3>🚀 Modelagem do banco: <h3>
-<img src="" alt="" width ='40%'>   
+<img src="./prototipo/db_Escola.png" alt="" width ='40%'>   
   
 <h3>🚀 Protótipo: <h3>
   
